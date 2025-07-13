@@ -5,11 +5,11 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//  Use a strong key (at least 32 characters)
+// ? Use a strong key (at least 32 characters)
 string securityKey = "mysuperdupersecret_mysuperdupersecret123!";
 var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey));
 
-//  Configure JWT Authentication
+// ?? Configure JWT Authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -29,7 +29,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-//  Add Swagger with JWT support
+// ? Add Swagger with JWT support
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "My Web API", Version = "v1" });
@@ -64,7 +64,7 @@ app.UseSwaggerUI();
 
 app.UseRouting();
 
-app.UseAuthentication();  //  Enable auth middleware
+app.UseAuthentication();  // ?? Enable auth middleware
 app.UseAuthorization();
 
 app.MapControllers();
